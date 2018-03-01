@@ -38,7 +38,7 @@
 					@foreach($usuarios as $usuario)
 					<tr>
 						<td>
-							<a class="btn btn-success" href="{{ route('usuario.editar') }}" role="button">
+							<a class="btn btn-success" href="{{ route('usuario.editar', $usuario->id) }}" role="button">
 								<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
 							</a>
 							<a class="btn btn-danger" href="#" role="button">
@@ -49,7 +49,11 @@
 						<td>{{ $usuario->email }}</td>
 						<td>{{ $usuario->endereco }}</td>
 						<td>
-							
+							@if( empty($usuario->foto) )
+								<img src="{{ asset('img/avatar-inicial.png') }}" alt="..." class="img-circle" width="30" height="30">		
+							@else
+								<img src="{{ asset('upload/usuarios/$usuario->foto') }}" alt="..." class="img-circle" width="30" height="30">		
+							@endif							
 						</td>
 					</tr>
 					@endforeach

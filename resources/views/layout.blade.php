@@ -39,11 +39,20 @@
 			<div class="col-sm-3 sidenav">
 				<h2 class="text-center">CRUD Laravel</h2>
 				<ul class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#section1">Home</a></li>
-					<li><a href="{{ route('usuarios') }}">Usuários</a></li>
-					<li><a href="#section3">Grupos</a></li>
-					<li><a href="#section3">Configurações</a></li>
-				</ul><br>
+					<li class="active">
+						<a href="{{ route('home') }}">Home</a>
+					</li>
+					<li>
+						<a href="{{ route('usuarios') }}">Usuários</a>
+					</li>
+					<li>
+						<a href="#section3">Grupos</a>
+					</li>
+					<li>
+						<a href="#section3">Configurações</a>
+					</li>
+				</ul>
+				<br>
 				<div class="input-group">
 					<input type="text" class="form-control" placeholder="Search Blog..">
 					<span class="input-group-btn">

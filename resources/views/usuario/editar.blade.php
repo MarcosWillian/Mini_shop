@@ -8,7 +8,7 @@
 <div class="row">
 	<div class="container-fluid">
 		<h3>Edição do usuário</h3>
-		<p>Atualize os dados do usuário</p>
+		<p>Atualize os dados do {{ $usuario->nome }}</p>
 	</div>	
 </div>
 <div class="row">
@@ -16,11 +16,12 @@
 		<br>
 		<div class="well">
 
-			<form action="">				
+			<form action="{{ route('usuario.atualizar', $usuario->id) }}" method="post" enctype="multipart/form-data">			
 				@include('usuario.form_usuario')
+
+				<button type="submit" class="btn btn-primary right">Editar</button>
 			</form>
-			
-			<button type="submit" class="btn btn-primary right">Editar</button>
+						
 		</div>
 	</div>
 </div>

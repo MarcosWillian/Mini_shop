@@ -11,12 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/* Home Rotas */
+Route::get('/', 
+	['as'=>'home', 'uses'=>'Admin\HomeController@index']);
 
 /* Usuários Rotas */
-Route::get('/usuarios', ['as'=>'usuarios', 'uses'=>'Admin\UserController@index']);
-Route::get('/usuario/cadastrar', ['as'=>'usuario.cadastrar', 'uses'=>'Admin\UserController@cadastrar']);
-Route::post('/usuario/salvar', ['as'=>'usuario.salvar', 'uses'=>'Admin\UserController@salvar']);
-Route::get('/usuario/editar', ['as'=>'usuario.editar', 'uses'=>'Admin\UserController@editar']);
+Route::get('/usuarios', 
+	['as'=>'usuarios', 'uses'=>'Admin\UserController@index']);
+Route::get('/usuario/cadastrar', 
+	['as'=>'usuario.cadastrar', 'uses'=>'Admin\UserController@cadastrar']);
+Route::post('/usuario/salvar', 
+	['as'=>'usuario.salvar', 'uses'=>'Admin\UserController@salvar']);
+Route::get('/usuario/editar/{id}', 
+	['as'=>'usuario.editar', 'uses'=>'Admin\UserController@editar']);
+Route::post('/usuario/atualizar/{id}', 
+	['as'=>'usuario.atualizar', 'uses'=>'Admin\UserController@atualizar']);
