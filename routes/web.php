@@ -26,3 +26,5 @@ Route::get('/usuario/editar/{id}',
 	['as'=>'usuario.editar', 'uses'=>'Admin\UserController@editar']);
 Route::post('/usuario/atualizar/{id}', 
 	['as'=>'usuario.atualizar', 'uses'=>'Admin\UserController@atualizar']);
+Route::get('/usuario/deletar/{id}', 
+	['as'=>'usuario.deletar', 'uses'=>'Admin\UserController@deletar']);

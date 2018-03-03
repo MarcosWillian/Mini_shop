@@ -1,69 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<title>CRUD - @yield('title')</title>
+	<title>CRUD | @yield('title')</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<style>
-		/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-		.row.content {height: 1500px}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-		/* Set gray background color and 100% height */
-		.sidenav {
-			background-color: #f1f1f1;
-			height: 100%;
-		}
-
-		/* Set black background color, white text and some padding */
-		footer {
-			background-color: #555;
-			color: white;
-			padding: 15px;
-		}
-
-		/* On small screens, set height to 'auto' for sidenav and grid */
-		@media screen and (max-width: 767px) {
-			.sidenav {
-				height: auto;
-				padding: 15px;
-			}
-			.row.content {height: auto;} 
-		}
-	</style>
 </head>
 <body>
 
 	<div class="container-fluid">
 		<div class="row content">
-			<div class="col-sm-3 sidenav">
+			<div class="col-m-3 col-sm-12 sidenav">
 				<h2 class="text-center">CRUD Laravel</h2>
 				<ul class="nav nav-pills nav-stacked">
-					<li class="active">
+					@php
+						/*Percorre a Rota procurando palavras chaves*/
+						$url = Route::currentRouteName();
+						if( $url == 'usuarios' ){
+							$url = 'usuario';
+						}	
+						else if( strpos($url, 'usuario') >= 0){
+							$fragmento = explode(".", $url);
+							$url = $fragmento[0];
+						}											
+					@endphp
+					<li class="{{ $url == 'home' ? 'active' : '' }}">
 						<a href="{{ route('home') }}">Home</a>
 					</li>
-					<li>
+					<li class="{{ $url == 'usuario' ? 'active' : ''  }}">
 						<a href="{{ route('usuarios') }}">Usuários</a>
-					</li>
-					<li>
-						<a href="#section3">Grupos</a>
-					</li>
-					<li>
-						<a href="#section3">Configurações</a>
-					</li>
+					</li>					
 				</ul>
-				<br>
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search Blog..">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">
-							<span class="glyphicon glyphicon-search"></span>
-						</button>
-					</span>
-				</div>
+				<br>				
 			</div>
 
-			<div class="col-sm-9">
+			<div class="col-m-9 col-sm-12">
 
 				@yield('content')
 
